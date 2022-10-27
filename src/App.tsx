@@ -5,12 +5,14 @@ import { Container } from 'react-bootstrap'
 import { SignUp } from './pages/SignUp'
 import { Route, Routes } from 'react-router-dom'
 import { SignIn } from './pages/SignIn'
+import { AuthProvider } from './context/AuthContext'
 
 
 function App() {
 
   return (
-    <div className='background d-flex align-items-center justify-content-center'>
+    <AuthProvider>
+<div className='background d-flex align-items-center justify-content-center'>
       <Routes>
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn/>} />
@@ -18,6 +20,8 @@ function App() {
       </Routes>
     </div>
 
+    </AuthProvider>
+    
   )
 }
 
