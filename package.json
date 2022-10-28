@@ -9,10 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/firebase": "^3.2.1",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "bootstrap": "^5.2.2",
+    "dotenv": "^16.0.3",
+    "firebase": "^8.10.0",
+    "formik": "^2.2.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
+    "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@types/node": "^18.11.7",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@vitejs/plugin-react": "^2.2.0",
