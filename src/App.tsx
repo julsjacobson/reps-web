@@ -9,12 +9,13 @@ import { AuthProvider } from './context/AuthContext'
 import { Splits } from './pages/Splits'
 import { PrivateRoute } from './routes/PrivateRoute'
 import { ForgotPassword } from './pages/ForgotPassword'
-
+import { Header } from './components/Header'
 
 function App() {
 
   return (
     <AuthProvider>
+      <Header />
 <div className='background d-flex align-items-center justify-content-center'>
       <Routes>
       <Route path="/sign-up" element={<SignUp />} />

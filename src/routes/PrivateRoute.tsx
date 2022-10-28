@@ -6,5 +6,8 @@ type PrivateRouteProps = { children: ReactNode }
 
 export function PrivateRoute({children} : PrivateRouteProps) {
     const {currentUser} = useAuth() 
-    return currentUser ? <>{children}</>: <Navigate to="/sign-in" />
+    return currentUser ? 
+        <>
+            {children}</>
+        : <Navigate to="/sign-in" />
 }
