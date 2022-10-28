@@ -6,6 +6,9 @@ import { SignUp } from './pages/SignUp'
 import { Route, Routes } from 'react-router-dom'
 import { SignIn } from './pages/SignIn'
 import { AuthProvider } from './context/AuthContext'
+import { Splits } from './pages/Splits'
+import { PrivateRoute } from './routes/PrivateRoute'
+import { ForgotPassword } from './pages/ForgotPassword'
 
 
 function App() {
@@ -16,6 +19,13 @@ function App() {
       <Routes>
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn/>} />
+      <Route path="/reset-password" element={<ForgotPassword/>} />
+
+      <Route path="/splits" element={
+        <PrivateRoute>
+          <Splits/>
+        </PrivateRoute>  } 
+      />
 
       </Routes>
     </div>

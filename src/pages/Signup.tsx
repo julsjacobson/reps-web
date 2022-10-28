@@ -3,6 +3,7 @@ import { Button, Container, Form, InputGroup, Stack } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { usernameExists, emailExists } from "../firebase";
+
 export function SignUp() {
     const emailRef = useRef<HTMLInputElement>(null)
     const usernameRef = useRef<HTMLInputElement>(null)
@@ -33,7 +34,7 @@ export function SignUp() {
 
     const { signup } = useAuth()
 
-    const handleSubmit = async (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleSubmit = async () => {
         validate()
         if (isValid && emailRef.current && usernameRef.current && passwordRef.current) {
             signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value)
@@ -174,7 +175,7 @@ export function SignUp() {
             </Form>
 
             <div className='d-flex align-self-center flex-column align-items-center' style={{width: '160pt', paddingTop: '2rem'}} >
-                <Button onClick={(e) => handleSubmit(e)} variant="success" className='custom-btn'>SIGN UP</Button>
+                <Button onClick={() => handleSubmit()} variant="success" className='custom-btn'>SIGN UP</Button>
                 <h4>OR</h4>
                 <Button style={{gap:'.5em'}} variant="light" className='custom-btn secondary d-flex align-items-center justify-content-center'>
                     <img src='/imgs/google-icon.png' height='20px'/>

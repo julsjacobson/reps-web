@@ -2,7 +2,6 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/firestore';
 
-
 const app = firebase.initializeApp({
     apiKey:process.env.FIREBASE_API_KEY, 
     authDomain: process.env.FIREBASE_AUTH_DOMAIN, 
@@ -27,6 +26,34 @@ export function createNewUser(email:string, password: string, username: string) 
     }).catch(e => {
         console.log("ERROR", e.message)
     })
+}
+
+export async function loginUser(username: string, password: string) {
+    // Get email
+
+    return await firebase.firestore().collection("users").where("username", '==', username)
+        .limit(1)
+        .get().then(async (querySnapshot) => {
+            let email = querySnapshot.docs.map((doc) => {
+                return doc.data().email
+            })
+
+            // Sign in 
+            if (email.length > 0) {
+                return await auth.signInWithEmailAndPassword(email[0], password).then(() => {
+                        return 'Success'
+                    }).catch((e) => {
+                        throw new Error("Incorrect password")
+                    })
+  
+            } else {
+                throw new Error("Username not found")
+            }
+        
+
+        })
+    
+
 }
 
 export async function usernameExists (username: string) {
